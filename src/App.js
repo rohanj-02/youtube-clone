@@ -9,6 +9,15 @@ class App extends React.Component{
         videos : [],
         selectedVideo : null,
     }
+
+    componentDidMount(){
+        this.handleSubmit('youtube');
+    }
+
+    onVideoSelect = (video) =>{
+        this.setState({selectedVideo: video});
+    }
+
     handleSubmit = async (searchTerm) =>{
         const response = await youtube.get("search",{ 
             params : { 
@@ -16,6 +25,7 @@ class App extends React.Component{
                 maxResults: '5',
                 key: config.API_KEY,
                 q : searchTerm,
+                type: 'video',
             }});
         console.log(response.data.items);
         this.setState({videos : response.data.items, selectedVideo : response.data.items[0] });
@@ -34,14 +44,18 @@ class App extends React.Component{
                             <SearchBar onFormSubmit = {this.handleSubmit}/>
                         </Grid>
                         <Grid item xs={2}></Grid>
-                        <Grid item xs={1}></Grid>
-                        <Grid item xs={7}>
-                            <VideoPlayer video = {selectedVideo}/>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <VideoList videos = {videos}/>
-                        </Grid>
                     </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                    <Grid container spacing = {10}>
+                        <Grid item xs={1}></Grid>
+                            <Grid item xs={7}>
+                                <VideoPlayer video = {selectedVideo}/>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <VideoList videos = {videos} selectedVideo={selectedVideo} onVideoSelect = {this.onVideoSelect}/>
+                            </Grid>
+                        </Grid>
                 </Grid>
             </Grid>
         )
