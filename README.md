@@ -1,4 +1,5 @@
 # Youtube Clone 
+A React app that uses Youtube API to display results based on query.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
