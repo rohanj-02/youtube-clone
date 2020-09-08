@@ -36,7 +36,7 @@ class App extends React.Component{
         return(
             <Grid justify="center" container spacing = {10}>
                 <Grid item xs={12}>
-                    <Grid container spacing={10}>
+                    <Grid container spacing={10} style={{padding: "25px"}}>
                         <Grid item xs={2}>
                             <h4> Logo </h4>
                         </Grid>

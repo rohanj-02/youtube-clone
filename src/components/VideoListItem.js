@@ -17,7 +17,7 @@ const VideoListItem = (props) =>{
         )
     }
     return(
-        <Grid container spacing = {5} style={{padding: "15px"}} elevation={6}>
+        <Grid container spacing = {5} style={{padding: "15px"}}>
             <Grid item xs = {10}>
                 <Paper style={{display: 'flex', alignItems: 'center', cursor:'pointer'}} onClick = {()=>onVideoSelect(video)}>
                     <Grid container spacing ={5}>
